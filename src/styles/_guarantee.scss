@@ -1,0 +1,20 @@
+.guarantee{
+    background: $primary-color;
+    padding: 3rem 0;
+    color: #fff;
+    .guarantee{
+        height: 300px;
+    }
+    .guarantee-icons{
+        color: #fff;
+        font-size: 1.5rem;
+    }
+    h6{
+        font-weight: bold;
+        padding: .5rem 0;
+    }
+    p{
+        font-size: .8556rem;
+        padding-bottom: .5rem;
+    }
+}

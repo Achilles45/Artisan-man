@@ -1,0 +1,23 @@
+.artisan{
+    margin: 4rem 0;
+    .artisan-img{
+        max-width: 220px;
+        width: 100%;
+        padding-left: 4.2rem;
+    }
+    h5{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .artisan-btn{
+        border: 1px solid $primary-color;
+        padding: .7rem 3rem;
+        background: $primary-color;
+        color: #fff;
+        text-decoration: none !important;
+        border-radius: 2px;
+        &:hover{
+            color: #fff;
+        }
+        }
+}

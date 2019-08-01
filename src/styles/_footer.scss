@@ -1,0 +1,33 @@
+footer{
+    h5{
+        font-weight: bold;
+        color: #1F1F1F;
+        padding: .7rem 0;
+    }
+    P{
+        font-size: .9rem;
+        line-height: 1.6;
+    }
+    input[type=text]{
+        border-radius: 2px;
+        &:focus{
+            box-shadow: none;
+        }
+    }
+    .newsletter-btn{
+        width: 100%;
+        border: none;
+        background: $primary-color;
+        color:#fff;
+        padding: .5rem 0;
+        border-radius: 2px;
+    }
+    .social-links{
+        font-size: 1.3rem;
+        color: #000;
+        padding-right: 1rem;
+    }
+    a{
+        color: #000;
+    }
+}
