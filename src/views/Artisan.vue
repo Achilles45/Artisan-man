@@ -126,7 +126,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    // height: 100vh;
     padding: 10rem 0;
     .artisan--wrapper{
         background: #fff;
