@@ -9,8 +9,8 @@
                 </div>
                 <div class="navbar__items">
                     <ul class="d-flex justify-content-between nav__items">
-                        <li><router-link :to="{name: Artisan}" class="nav-links">Book an Artisan</router-link></li>
-                        <li><router-link :to="{name: Artisan}" class="nav-links artisan-link">Become an Artisan</router-link></li>
+                        <li><router-link to="/artisan" class="nav-links">Book an Artisan</router-link></li>
+                        <li><router-link to="/artisan" class="nav-links artisan-link">Become an Artisan</router-link></li>
                         <li><router-link :to="{name: Artisan}" class="nav-links login-link">Login</router-link></li>
                     </ul>
                 </div>
