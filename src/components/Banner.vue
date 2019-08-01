@@ -127,6 +127,7 @@ export default {
         z-index: 2;
         display: none !important;
         border-radius: 3px;
+        height: 20rem;
     }
     .show-nav{
         display: block !important;
