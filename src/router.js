@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Artisan from './views/Artisan.vue';
+import Login from './views/Login.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +26,11 @@ export default new Router({
       path: '/artisan',
       name: 'artisan',
       component: Artisan
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
   ]
 })
