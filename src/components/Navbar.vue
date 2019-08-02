@@ -10,6 +10,7 @@
                         <li><router-link to="/book" class="nav__links">Book an Artisan</router-link></li>
                         <li><router-link to="/artisan" class="nav__links">Become an Artisan</router-link></li>
                         <li><router-link to="/login" class="nav__links">Login</router-link></li>
+                        <li><a @click="logOut()" class="nav__links">Logout</a></li>
                     </ul>
                 </div>
                 <div @click="openNav()" class="navbar__toggler">
@@ -20,6 +21,7 @@
     </div>
 </template>
 <script>
+import firebase from "firebase";
 export default {
     name: 'Navbar',
     data(){
@@ -31,6 +33,12 @@ export default {
         openNav: function(){
             const nav = document.querySelector('.navbar__links');
             nav.classList.toggle('show-nav');
+        },
+        logOut: function(){
+            firebase.auth().signOut()
+            .then(()=>{
+                this.$router.push({name: 'login'})
+            })
         }
     }
 }
@@ -60,6 +68,7 @@ export default {
                     color: #1F1F1F;
                     text-decoration: none;
                     margin-left: 1.3rem;
+                    cursor: pointer;
                 }
             }
         }
@@ -73,6 +82,7 @@ export default {
 @media only screen and (max-width: 768px) {
     .navbar__wrapper{
         padding: 1rem 0;
+        box-shadow: 0px 0px 4px rgba(0,0,0,.5);
     }
     .navbar__links{
         background: #828282;

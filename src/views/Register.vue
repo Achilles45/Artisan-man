@@ -11,100 +11,64 @@
                             <router-link to="/"><img src="../assets/logo.jpg" class="img-fluid logo" alt=""></router-link>
                         </div>
                     </div>
-                    <form>
+                    <div v-if="feedback" class="feeback">
+                        <div class="alert alert-danger">{{ feedback}}</div>
+                    </div>
+                    <div v-if="success" class="success">
+                        <div class="alert alert-success">{{ success}}</div>
+                    </div>
+                    <form @submit.prevent="registerArtisan()">
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
-                                   <input type="text" class="form-control" placeholder="First Name">
+                                   <input type="text" class="form-control" placeholder="First Name" v-model="fname" autocomplete="off">
                                </div>
                            </div>
                             <div class="col-md-6">
                                <div class="form-group">
-                                   <input type="text" class="form-control" placeholder="Last Name">
+                                   <input type="text" class="form-control" placeholder="Last Name" v-model="lname" autocomplete="off">
                                </div>
                            </div>
                        </div>
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
-                            <select name="state" id="state" class="form-control">
-                                <option selected="selected">Currrent State</option>
-                                <option value='Abia'>Abia</option>
-                                <option value='Adamawa'>Adamawa</option>
-                                <option value='AkwaIbom'>AkwaIbom</option>
-                                <option value='Anambra'>Anambra</option>
-                                <option value='Bauchi'>Bauchi</option>
-                                <option value='Bayelsa'>Bayelsa</option>
-                                <option value='Benue'>Benue</option>
-                                <option value='Borno'>Borno</option>
-                                <option value='CrossRivers'>CrossRivers</option>
-                                <option value='Delta'>Delta</option>
-                                <option value='Ebonyi'>Ebonyi</option>
-                                <option value='Edo'>Edo</option>
-                                <option value='Ekiti'>Ekiti</option>
-                                <option value='Enugu'>Enugu</option>
-                                <option value='Gombe'>Gombe</option>
-                                <option value='Imo'>Imo</option>
-                                <option value='Jigawa'>Jigawa</option>
-                                <option value='Kaduna'>Kaduna</option>
-                                <option value='Kano'>Kano</option>
-                                <option value='Katsina'>Katsina</option>
-                                <option value='Kebbi'>Kebbi</option>
-                                <option value='Kogi'>Kogi</option>
-                                <option value='Kwara'>Kwara</option>
-                                <option value='Lagos'>Lagos</option>
-                                <option value='Nasarawa'>Nasarawa</option>
-                                <option value='Niger'>Niger</option>
-                                <option value='Ogun'>Ogun</option>
-                                <option value='Ondo'>Ondo</option>
-                                <option value='Osun'>Osun</option>
-                                <option value='Oyo'>Oyo</option>
-                                <option value='Plateau'>Plateau</option>
-                                <option value='Rivers'>Rivers</option>
-                                <option value='Sokoto'>Sokoto</option>
-                                <option value='Taraba'>Taraba</option>
-                                <option value='Yobe'>Yobe</option>
-                                <option value='Zamfara'>Zamafara</option>
-                        </select>
+                            <input type="text" class="form-control" placeholder="State of Residense" v-model="state" autocomplete="off">
                         </div>
                     </div>
                            <div class="col-md-6">
                                  <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Town or City">
+                                    <input type="text" class="form-control" placeholder="Town or City" v-model="city" autocomplete="off">
                                 </div>
                            </div>
                        </div>
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
-                                   <input type="text" class="form-control" placeholder="Phone Number">
+                                   <input type="tel" class="form-control" placeholder="Phone Number" v-model="phone" autocomplete="off" pattern="\d{0,15}">
                                </div>
                            </div>
                            <div class="col-md-6">
-                               <input type="text" class="form-control" placeholder="Email Address">
+                               <div class="form-group">
+                               <input type="email" class="form-control" placeholder="Email Address" v-model="email" autocomplete="off">
+                               </div>
                            </div>
                        </div>
                          <div class="form-group">
-                           <select name="" id="" class="form-control">
-                               <option value="">Select skill</option>
-                                <option value="">Electricals</option>
-                                    <option value="">Plumbing</option>
-                                    <option value="">Carpentry</option>
-                                    <option value="">Painting</option>
-                                    <option value="">Laundry</option>
-                                    <option value="">Tilling</option>
-                                    <option value="">Generator repairs</option>
-                           </select>
+                          <input type="text" class="form-control" placeholder="Enter your skill" v-model="skill" autocomplete="off">
+                       </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Username" v-model="uname" autocomplete="off">
                        </div>
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group">
-                                   <input type="password" class="form-control" placeholder="Password">
+                                   <input type="password" class="form-control" placeholder="Password" v-model="password" autocomplete="off">
                                </div>
                            </div>
                             <div class="col-md-6">
                                <div class="form-group">
-                                   <input type="password" class="form-control" placeholder="Confirm Password">
+                                   <input type="password" class="form-control" placeholder="Confirm Password" v-model="repeatPassword" autocomplete="off">
                                </div>
                            </div>
                        </div>
@@ -120,13 +84,74 @@
     </div>
 </template>
 <script>
+import { setTimeout } from 'timers';
+import db from "@/firebase/init";
+import firebase from "firebase";
 export default {
     name: 'register',
     data(){
         return{
-            
+            fname: null,
+            lname: null,
+            state: null,
+            city: null,
+            phone: null,
+            email: null,
+            skill: null,
+            uname: null,
+            password: null,
+            repeatPassword: null,
+            feedback: null,
+            success: null
         }
     },
+    methods:{
+        //Function to clear messages
+        clearMsg: function(){
+            setTimeout(()=>{
+                document.querySelector('.alert').remove()
+            },3000)
+        },
+        registerArtisan: function(){
+            if (this.fname || this.lname || this.state || this.city || this.phone || this.email ||this.skill || this.uname || this.password || this.repeatPassword) {
+                if(this.password != this.repeatPassword){
+                    this.feedback = "Password do not match";
+                       this.clearMsg();
+                }else{
+                  //Check the database if the username allready exists
+                  let ref = db.collection('artisans').doc(this.uname);
+                  ref.get().then(doc =>{
+                      if(doc.exists){
+                          this.feedback = 'Ops! Username already taken';
+                      }else{
+                          //Let's sign up the user now
+                          firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                          .then(cred=>{
+                              ref.set({
+                                  First_Name: this.fname,
+                                  Last_Name: this.lname,
+                                  State: this.state,
+                                  City: this.city,
+                                  Phone: this.phone,
+                                  Skill: this.skill,
+                                  User_id: cred.user.uid,
+                              })
+                              .then(()=>{
+                                  this.$router.push({name: 'dashboard'})
+                              })
+                          })
+                          .catch(err=>{
+                              this.feedback = err.message
+                          })
+                      }
+                  })
+                }
+            }else{
+                this.feedback = "Oops! All fields are required"
+                this.clearMsg();
+            }
+        }
+    }
 }
 </script>
 
@@ -145,8 +170,14 @@ export default {
         }
         form{
             padding-top: 1rem;
-            input[type=text], input[type=password], select{
-                border-radius: 0;
+            input[type=text], input[type=password], input[type=email], input[type=tel], select{
+                background-color: transparent;
+                border-radius: 3px;
+                color: #656565;
+                box-shadow: none;
+                border: 1px solid rgba(209,209,209,0.56);
+                height: 2.88rem;
+                margin-top: .5rem;
             }
             .register-btn{
                 background: $primary-color;
