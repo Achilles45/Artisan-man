@@ -170,11 +170,7 @@ export default {
         }
         form{
             padding-top: 1rem;
-<<<<<<< HEAD
-            input[type=text], input[type=password], select{
-=======
             input[type=text], input[type=password], input[type=email], input[type=tel], select{
->>>>>>> designs
                 background-color: transparent;
                 border-radius: 3px;
                 color: #656565;
