@@ -99,7 +99,7 @@
           <div class="col-md-5">
             <h3>You can make &#8358;20,000 weekly as an artisan on this platform</h3>
             <p>Get access to a lot of people that needs your services in your locality</p><br />
-            <router-link :to="{name: 'Artisan'}" class="artisan-btn">Find Out More</router-link>
+            <router-link to="/artisan" class="artisan-btn">Find Out More</router-link>
           </div>
           <div class="col-md-3"></div>
         </div>
