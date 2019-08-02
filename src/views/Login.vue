@@ -20,7 +20,7 @@
                      </div>
                      <button type="submit" class="login-btn d-block">Login</button>
                  </form>
-                 <h6 class="text-center pt-4">New to ArtisanMan?&nbsp; <router-link to="/">Create Account</router-link></h6>
+                 <h6 class="text-center pt-4">New to ArtisanMan?&nbsp; <router-link to="/register">Create Account</router-link></h6>
                  <h6 class="text-center"><router-link to="/">Forgot Password?</router-link></h6>
                 </div>
                 <div class="col-md-4">

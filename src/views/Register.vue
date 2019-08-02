@@ -146,7 +146,13 @@ export default {
         form{
             padding-top: 1rem;
             input[type=text], input[type=password], select{
-                border-radius: 0;
+                background-color: transparent;
+                border-radius: 3px;
+                color: #656565;
+                box-shadow: none;
+                border: 1px solid rgba(209,209,209,0.56);
+                height: 2.88rem;
+                margin-top: .5rem;
             }
             .register-btn{
                 background: $primary-color;
