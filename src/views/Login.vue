@@ -11,12 +11,15 @@
                 <router-link to="/"><img src="../assets/logo.jpg" class="img-fluid logo" alt=""></router-link>
                     </div>
                     </div>
-                 <form mt-3>
+                 <form mt-3 @submit.prevent="logIn()">
+                     <div v-if="feedback" class="feedback">
+                         <div class="alert alert-danger">{{ feedback }}</div>
+                     </div>
                      <div class="form-group">
-                         <input type="text" class="form-control" placeholder="Email Address">
+                         <input type="text" class="form-control" placeholder="Email Address" v-model="email">
                      </div>
                       <div class="form-group">
-                         <input type="password" class="form-control" placeholder="Password">
+                         <input type="password" class="form-control" placeholder="Password" v-model="password">
                      </div>
                      <button type="submit" class="login-btn d-block">Login</button>
                  </form>
@@ -31,8 +34,39 @@
     </div>
 </template>
 <script>
+import firebase, { functions } from  "firebase"
+import { setTimeout } from 'timers';
 export default {
-    name: 'login'
+    name: 'login',
+    data(){
+        return{
+            email: null,
+            password: null,
+            feedback: null,
+        }
+    },
+    methods:{
+        clearMsg: function(){
+            setTimeout(()=>{
+                document.querySelector('.alert').remove()
+            }, 3000)
+        },
+        logIn: function(){
+            if (this.email && this.password) {
+                //Login he user
+                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then(cred=>{
+                    this.$router.push({name: 'dashboard'})
+                })
+                .catch(err=>{
+                    this.feedback = err.message;
+                })
+            }else{
+                this.feedback = 'Please, provide your credentials.'
+                this.clearMsg();
+            }
+        }
+    }
 }
 </script>
 <style scoped lang="scss">
@@ -55,7 +89,7 @@ export default {
                 border-radius: 3px;
                 color: #656565;
                 box-shadow: none;
-                border: 2px solid rgba(209,209,209,0.56);
+                border: 1px solid rgba(209,209,209,0.56);
                 height: 2.88rem;
                 margin-top: .5rem;
             }

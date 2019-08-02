@@ -4,6 +4,8 @@ import Index from './views/Index.vue'
 import Artisan from './views/Artisan.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Dashboard from './views/Dashboard.vue';
+
 Vue.use(Router)
 
 export default new Router({
@@ -37,6 +39,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
     },
   ]
 })
