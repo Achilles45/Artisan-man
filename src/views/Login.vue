@@ -39,10 +39,10 @@ export default {
 @import '../styles/_colors.scss';
 .login__wrapper{
     background: $primary-color;
-    height: 100vh;
+    height: auto;
     .login__card{
         background: #fff;
-        margin-top: 10rem;
+        margin: 10rem 0;
         padding: 2.5rem;
         border-radius: 3px;
         .logo{
